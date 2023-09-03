@@ -1,0 +1,42 @@
+{% extends 'default.html' %}
+
+{% block title %}
+Posts
+{% endblock title %}
+
+{% block content %}
+    <hr>
+        <table>
+            <tr>
+                <td>
+                    Заголовок
+                </td>
+                <td>
+                    Дата публикации
+                </td>
+                <td>
+                    Содержание
+                </td>
+                <td>
+                    Отклики
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ post.title }}
+                </td>
+                <td>
+                    {{ post.dateCreation  }}
+                </td>
+                <td>
+                    {{ post.content|striptags }}
+                </td>
+                <td>
+                    {{ response.text }}
+                </td>
+                <td>
+                    <a href="{% url 'response_add' %}?post_id={{ post.id }}">Создать отклик</a>
+                </td>
+            </tr>
+        </table>
+{% endblock content %}

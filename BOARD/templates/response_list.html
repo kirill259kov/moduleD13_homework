@@ -1,0 +1,19 @@
+{% extends 'default.html' %}
+
+{% block title %}
+    Отклики
+{% endblock title %}
+
+{% block content %}
+    <h1>Отклики на записи</h1>
+    <hr>
+    <form method="GET">
+        {{ filter.form }}
+        <input class="btn btn-primary" type="submit" value="Найти">
+    </form>
+        {% for response in filter.qs %}
+            <h2>{{ response.post.title }}</h2>
+            <p>{{ response.text }}</p>
+            <a href="{% url 'response_delete' response.id %}"><u>Удалить отклик</u></a>
+        {% endfor %}
+{% endblock content %}
